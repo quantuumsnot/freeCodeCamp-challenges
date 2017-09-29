@@ -1,0 +1,6 @@
+body {background-color: black;}
+#container {background-color: gray;}
+#photoLink, #wikiLink, #authorLink {color: lightblue;}
+#photoLink:hover, #wikiLink:hover, #authorLink:hover {background-color: white; color: darkblue; text-decoration: none;}
+#freeCodeCampLink {color: darkgreen; font-family: Lato, sans-serif;}
+#freeCodeCampLink:hover {background-color: white; color: darkgreen; text-decoration: none;}
