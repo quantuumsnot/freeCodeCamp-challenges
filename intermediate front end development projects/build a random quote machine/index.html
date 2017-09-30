@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Build a Random Quote Machine challenge</title>
+    <!-- tell the browser to render all elements more consistently -->
+    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">-->
+    <link rel="stylesheet" href="css/normalize.min.css">
+    <style>
+      /* If you want to make the site semantic, 
+        replace div with class  .container with main tag, 
+                                .row with section, 
+                                .column with article and/or aside
+                
+      */
+      
+      /* For mobile phones */
+      [class*="column"] {
+        width: auto;
+        float: left;
+      }
+      
+      /* For desktop */
+      @media only screen and (min-width: 800px) {
+        .column {
+          width: auto;
+          float: left;
+        }
+      }
+      
+      html {
+        box-sizing: border-box;
+      }
+      
+      *, *:before, *:after {
+        box-sizing: inherit;
+      }
+      
+      body {
+        width: auto;
+        background-color: lightblue;
+      }
+      
+      .container {
+        margin: auto;
+        /*display: table-cell;
+        vertical-align: middle;*/
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      
+      .box {
+        width: 34%;
+        margin: auto;
+        padding: 1em;
+        border: 2px outset silver;
+        border-radius: 1em;
+        text-align: center;
+      }
+      
+      .row {
+        min-height: 50px;
+      }
+      
+      .row::before, .row::after {
+        display: table;
+        content: "";
+        clear: both;
+      }
+      
+      .tweetme {
+        background-image: url("img/twitter_32x32.png");
+        background-color: white;
+        border: none;
+        font-size: 1.5em;
+        float: left;
+        width: 32px;
+        height: 32px;
+      }
+      
+      .tweetme:hover {
+        filter: contrast(150%) brightness(1.5);
+      } /* FIXME - image corners are not fully transparend */
+
+      .tweetme:focus {
+        outline: 0;
+      }
+      
+      .newquote {
+        color: white;
+        background-color: blue;
+        border: none;
+        border-radius: 1em;
+        font-family: Lato, Monospace, san-serif;
+        font-size: 1.5em;
+        float: right;
+      }
+      
+      .newquote:hover {
+        background: lightyellow;
+        color: blue;
+        transition: background-color 5s ease-out;
+        transition: color 0.5s ease-out;
+      }
+      
+      .newquote:focus {
+        outline: 0;
+      }
+      
+      #quotetextarea {
+        font-size: 1.5em;
+      }
+    </style>
+    <script>
+      var currentQuote = '"Life is 10% what happens to you and 90% how you react to it" -- Charles Swindoll';
+      
+      //dummy quotes database
+      var quotes = {
+        "data" :[
+          {
+            "author": "Thomas Fuller",
+            "quote": "All things are difficult before they are easy"
+          },
+          {
+            "author": "Oscar Wilde",
+            "quote": "The only thing to do with good advice is pass it on. It is never any use to oneself"
+          },
+          {
+            "author": "unknown",
+            "quote": "A stitch in time would have confused Einstein"
+          },
+          {
+            "author": "Donald Gannon",
+            "quote": "Where facts are few, experts are many"
+          },
+          {
+            "author": "Mel Brooks",
+            "quote": "Good taste is the enemy of comedy"
+          }
+        ]
+      };
+      
+      //dummy function, usually must be a (AJAX) request to some database
+      function newQuote() {
+        var quoteNumber = Math.floor(Math.random() * quotes["data"].length);
+        var quote = quotes["data"][quoteNumber]["quote"];
+        var author = quotes["data"][quoteNumber]["author"];
+        currentQuote = document.getElementById("quotetextarea").innerHTML = '"' + quote + '"' + " -- " + author;
+      }
+      
+      function tweetMe() {
+        var tweetWindow = window.open('https://twitter.com/intent/tweet?hashtags=quotes&text=' + encodeURIComponent(currentQuote), "popup", "width=512, height=384");
+        
+        if (window.focus) {
+          tweetWindow.focus();
+        }
+        
+        return false;
+      }
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="box">
+        <div class="row">
+          <div class="column">
+            <i id="quotetextarea">
+              "Life is 10% what happens to you and 90% how you react to it" -- Charles Swindoll
+            </i>
+          </div>
+        </div>
+        <div class="row">
+        </div>
+        <div class="row">
+          <button class="tweetme" onclick="tweetMe()"></button>
+          <button class="newquote" onclick="newQuote()">Enlighten me</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
