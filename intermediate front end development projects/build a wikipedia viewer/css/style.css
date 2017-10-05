@@ -1,0 +1,105 @@
+.container {
+      background-color: black;
+      color: white;
+      /*margin: 0 auto;*/
+      display: flex;
+      flex-flow: column; /* set child elements to be vertically placed */
+      justify-content: center; /* center child elements horizontally */
+      align-items: center; /* center child elements vertically */
+      align-content: center; /* center child lines to the center of container */
+    }
+
+    .child {
+      border: 2px solid white;
+      border-radius: 0.25em;
+      margin: auto; /* needed for perfect centering */
+      padding: 2px;
+      text-align: center;
+    }
+    
+    .child:hover {
+      color: black;
+      background-color: white;
+      border-color: red;
+      cursor: pointer;
+    }
+    
+    .title {
+      text-transform: uppercase;
+    }
+    
+    a {
+      text-decoration: none;
+    }
+    
+    a, a:visited, a:hover, a:active {
+      color: inherit;
+    }
+    
+    h2 {
+      padding: 0;
+      border: none;
+      height: auto;
+    }
+    
+    h2 p {
+      margin: 0;
+      text-align: center;
+    }
+    
+    #searchinput {
+      background-color: white;
+      border: none;
+      /*font-size: 1em;*/
+    }
+    
+    #searchinput:focus {
+      outline: none;
+    }
+    
+    #searchbutton {
+      border: none;
+      background-color: #36c;
+    } /* FIXME - unable to vertically align with the input's top border, there's a small empty area below the button */
+    
+    #searchbutton:hover {
+      background-color: lightblue;
+      color: blue;
+      cursor: pointer;
+    } /* no need to load img, we have a HTML magnifying glass symbol
+
+    #searchbutton:focus {
+      outline: none;
+    }
+    
+    h2 p {
+      margin: 0;
+      text-align: center;
+    }
+    
+    .weatherfooter {
+      background-color: black;
+      color: white;
+      border-radius: 0.25em;
+    }
+    
+    /* something stops the anchors to load their specific styles locally and inherit only
+      the main a style; on remote hosts the problem disappears */
+      
+    #authorLink {color: lightblue;}
+    #authorLink:hover {
+      background-color: white; 
+      color: darkblue; 
+      text-decoration: none;
+      border-radius: 0.25em;
+    }
+    #freeCodeCampLink {
+      color: darkgreen; 
+      font-family: Lato, sans-serif;
+    }
+    #freeCodeCampLink:hover {
+      background-color: white; 
+      color: darkgreen; 
+      text-decoration: none;
+      border-radius: 0.25em;
+    }
